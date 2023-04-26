@@ -1,0 +1,13 @@
+@use "sass:list";
+@use "sass:map";
+
+$colors: (
+  "primary": #2d3436,
+  "secondary": #dfe6e9,
+  "white": #fff,
+  "black": #000,
+  "danger": #e74c3c,
+  "warning": #f1c40f,
+  "info" : #3498db,
+  "success": #2ecc71
+);

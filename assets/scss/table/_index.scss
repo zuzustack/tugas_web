@@ -1,0 +1,30 @@
+.table-1 {
+  display: inline-table;
+  width: 100%;
+  border: 1px solid rgb(101, 101, 101);
+  border-radius: 10px;
+  overflow: hidden;
+
+  thead {
+    border-bottom: 1px solid rgb(101, 101, 101);
+    border-radius: 10px;
+    th {
+      text-align: center;
+      font-size: 16px !important;
+      padding-block: calc(0.5rem * 2);
+      font-weight: bold;
+      padding-inline: calc(0.5rem * 2);
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        text-align: center;
+        font-size: 16px !important;
+        padding-block: calc(0.5rem * 2);
+        padding-inline: calc(0.5rem * 2);
+      }
+    }
+  }
+}
