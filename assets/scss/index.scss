@@ -5,6 +5,7 @@
 @import "corecss/variable";
 @import "corecss/reset";
 @import "card";
+@import "pagination";
 @import "modal";
 @import "table";
 
@@ -18,11 +19,24 @@
 
 body{
   z-index: 1;
+  overflow: hidden !important;
 }
 
 a {
   transition: .3s;
   cursor: pointer;
+}
+
+.section{
+  min-height: 100vh;
+  width: 100vw;
+  overflow-y: scroll !important;
+
+  .main-section{
+    padding-inline: calc(0.5rem * 3);
+    padding-block: calc(0.5rem * 2);
+    border-left: 3px rgba($color: #000000, $alpha: .2) solid;
+  }
 }
 
 .mt-auto {
@@ -289,7 +303,6 @@ p {
 
 .sidebar{
   box-sizing: border-box;
-  border-right: 3px rgba($color: #000000, $alpha: .2) solid;
   width: 250px;
 }
 

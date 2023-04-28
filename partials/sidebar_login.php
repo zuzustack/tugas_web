@@ -1,11 +1,11 @@
 <div class="text-white py-3 h-full sidebar">
     <div class="mb-6 text-center">
-        <h5 style="font-weight: bold;">Abal</h5>
+        <h5 style="font-weight: bold;">Manage</h5>
     </div>
 
 
     <div class="text-center mb-6">
-        <div style="width: 50px; height: 50px; border-radius: 50%;" class="bg-white mx-auto"></div>
+        <img src="<?= $_SESSION['user']['photo'] ?? "./assets/img/guest.png" ?>" width="75px">
         <p class="mt-1 mb-3"><?= $_SESSION['user']['name'] ?></p>
         <a class="btn btn-outline-white hover-text-black text-white">Edit</a>
     </div>

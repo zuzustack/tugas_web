@@ -11,6 +11,7 @@ include_once(__DIR__ . "/../controller/ErrorCtrl.php");
 
 
 BaseCtrl::$request = $request;
+BaseCtrl::$files = $_FILES;
 
 $DB = Database::connect('crudweb');
 

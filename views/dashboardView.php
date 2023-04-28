@@ -1,9 +1,9 @@
-<section class="bg-primary h-full">
+<section class="bg-primary section">
     <div class="d-flex">
         <div>
             <?php include_once __DIR__ . "/../partials/sidebar_login.php" ?>    
         </div>
-        <div class="text-white px-3 py-2">
+        <div class="text-white px-3 py-2 main-section">
             <h5 class="mb-3">Dashboard</h5>
 
             <div>

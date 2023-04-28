@@ -23,6 +23,7 @@ $routes = array(
     "dashboard.get" => $HomeCtrl.":dashboardView?login",
 
     "users.get" => $UserCtrl.":usersView?login",
+    "users-create.post" => $UserCtrl.":createUser?login",
 );
 
 $error = array(

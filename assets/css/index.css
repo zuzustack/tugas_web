@@ -62,6 +62,35 @@ table {
   font-size: 20px;
 }
 
+pagination {
+  display: flex;
+  flex-wrap: wrap;
+}
+pagination div a {
+  border-radius: 5px;
+  display: grid;
+  width: 60px;
+  height: 40px;
+  place-content: center;
+  color: black;
+  background: #fff;
+  font-size: 14px;
+}
+pagination div a:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+pagination .active a {
+  border-radius: 5px;
+  display: grid;
+  width: 60px;
+  height: 40px;
+  place-content: center;
+  color: #fff !important;
+  background: #000 !important;
+  font-size: 14px;
+}
+
 .modal {
   background: rgba(0, 0, 0, 0.75);
   position: absolute;
@@ -119,11 +148,23 @@ table {
 
 body {
   z-index: 1;
+  overflow: hidden !important;
 }
 
 a {
   transition: 0.3s;
   cursor: pointer;
+}
+
+.section {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-y: scroll !important;
+}
+.section .main-section {
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  border-left: 3px rgba(0, 0, 0, 0.2) solid;
 }
 
 .mt-auto {
@@ -967,7 +1008,6 @@ p {
 
 .sidebar {
   box-sizing: border-box;
-  border-right: 3px rgba(0, 0, 0, 0.2) solid;
   width: 250px;
 }
 

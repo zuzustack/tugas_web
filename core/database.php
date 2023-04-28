@@ -18,4 +18,11 @@ class Database{
 
         return $arr;
     }
+
+    static public function runSql($sql){
+        $result =  mysqli_query(self::$DB, $sql);
+
+        return $result;
+    }
+
 }
