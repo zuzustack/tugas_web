@@ -1,16 +1,19 @@
 let init = () => {
     // Init Data
+    let url = "/" + $('pagination')[0].baseURI.split("/")[3].split("&")[0];
     let data = $('pagination').data();
-    console.log(data);
     let innerHtml = "";
     let number = "";
     let totalPage = Math.ceil(data.totalpage / data.maxitem)
+
+    console.log(url);
+
 
     // check currentPage same with 1
     if (data.currentpage != 1) {
         innerHtml += `
             <div class="prev">
-                <a href="/?users&page=${data.currentpage - 1}">Prev</a>
+                <a href="${url}&page=${data.currentpage - 1}">Prev</a>
             </div>
         `
     }
@@ -26,7 +29,7 @@ let init = () => {
         } else {
             number += `
             <div class="number">
-                <a href="/?users&page=${i}">${i}</a>
+                <a href="${url}&page=${i}">${i}</a>
             </div>
             `
         }
@@ -38,7 +41,7 @@ let init = () => {
     if (data.currentpage != totalPage) {
         innerHtml += `
         <div class="next">
-            <a href="/?users&page=${data.currentpage + 1}">Next</a>
+            <a href="${url}&page=${data.currentpage + 1}">Next</a>
         </div>
         `
     }

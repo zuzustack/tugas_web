@@ -4,8 +4,8 @@ namespace Controller;
 
 use Database;
 
-class UserCtrl extends BaseCtrl{
-    static public function usersView(){
+class AdminCtrl extends BaseCtrl{
+    static public function adminView(){
         $request = self::$request;
         
         if (isset($request['page'])) {
@@ -17,53 +17,46 @@ class UserCtrl extends BaseCtrl{
         }
 
 
-        $users = Database::rawSql("SELECT * FROM users WHERE is_admin = 0 LIMIT $skip,5");
-        $totalPage = count(Database::rawSql("SELECT * FROM users WHERE is_admin = 0"));
+        $users = Database::rawSql("SELECT * FROM users WHERE is_admin = 1 LIMIT $skip,5");
+        $totalPage = count(Database::rawSql("SELECT * FROM users WHERE is_admin = 1"));
 
 
-        return BaseCtrl::render("/views/usersView.php", [
-            "pageTitle" => "Users",
+        return BaseCtrl::render("/views/adminView.php", [
+            "pageTitle" => "Admin",
             "users" => $users,
             "currentPage" => $page,
             "totalPage" => $totalPage
         ]);
     }
 
-
-    static public function deleteUser(){
-        $request = self::$request;
-
-        $id = $request['id'];
-
-        $users = Database::runSql("DELETE FROM `users` WHERE `id`=$id");
-
-        return self::redirect("users");
-    }
-
-    static public function createUser(){
+    static public function createAdmin(){
         $request = self::$request;
         $files = self::$files;
 
         if ($files['photo']['name'] != "") {
             $photo = $files['photo'];
-            $upload = self::upload($photo,"img/", $request['username']);
+            $upload = self::upload($photo,'img/', $request['username']);
+
             $path = $upload['path'];
         } else {
             $path = "./assets/img/guest.png";
         }
+
+
 
         $now = date("Y-m-d H:i:s");
         $username = $request['username'];
         $name = $request['name'];
         $password = "123";
 
-        $users = Database::runSql("INSERT INTO users(create_time,name,photo,password,username,is_admin) VALUES('$now','$name','$path','$password','$username', 0)");
+        $users = Database::runSql("INSERT INTO users(create_time,name,photo,password,username,is_admin) VALUES('$now','$name','$path','$password','$username', 1)");
 
-        return self::redirect("users");
+        return self::redirect("admin");
     }
+    
 
 
-    static public function editUser(){
+    static public function editAdmin(){
         $request = self::$request;
         $files = self::$files;
 
@@ -98,7 +91,7 @@ class UserCtrl extends BaseCtrl{
         // photo
         if ($files['photo']['name'] != "") {
             $photo = $files['photo'];
-            $upload = self::upload($photo,"img/", $username);
+            $upload = self::upload($photo,'img/', $request['username']);
             $path = $upload['path'];
         } else {
             $path = $user['photo'];
@@ -107,7 +100,18 @@ class UserCtrl extends BaseCtrl{
         $users = Database::runSql("UPDATE users SET name='$name',password='$password',username='$username',photo='$path' WHERE `id`=$id;");
 
 
-        return self::redirect("users");
+        return self::redirect("admin");
+    }
+
+
+    static public function deleteAdmin(){
+        $request = self::$request;
+
+        $id = $request['id'];
+
+        $users = Database::runSql("DELETE FROM `users` WHERE `id`=$id");
+
+        return self::redirect("admin");
     }
 
 }

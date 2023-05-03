@@ -1,0 +1,38 @@
+playsong{
+    svg{
+        cursor: pointer !important;
+    }
+
+    .hidden{
+        display: none !important;
+    }
+
+    .show{
+        display: block !important;
+    }
+}
+
+
+
+.public-music{
+    box-sizing: border-box;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translate(0px, 500px);
+    transition: .3s;
+}
+
+audio {
+    width: 100%;
+    border-radius: 0px !important;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #FFF;
+}
+
+.public-music[data-play="1"]{
+    transform: translate(0px, 0px);
+}

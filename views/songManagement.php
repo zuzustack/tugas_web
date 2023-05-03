@@ -3,31 +3,34 @@
         <div>
             <?php include_once __DIR__ . "/../partials/sidebar_login.php" ?>    
         </div>
+        
         <div class="text-white w-100 main-section">
-            <h5 class="mb-3">Users</h5>
+            <h5 class="mb-3">Admin</h5>
             <button class="d-block btn-modal btn-black btn text-white mb-2 ms-auto" data-target-modal="createModal">Create</button>
             <table class="table-1 text-black bg-white px-1-py-1">
                 <thead>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Username</th>
-                    <th>Photo</th>
+                    <th>Play</th>
                     <th>Action</th>
+                    <th id="musicPLay">
+                        
+                    </th>
                 </thead>
                 <tbody>
-                    <?php foreach ($users as $index => $user) : ?>
+                    <?php foreach ($songs as $index => $song) : ?>
                         <tr>
-                            <td style="vertical-align: middle;" ><?= ($currentPage - 1) * 5 + ($index + 1)?></td>
-                            <td style="vertical-align: middle;" ><?= $user['name'] ?></td>
-                            <td style="vertical-align: middle;" ><?= $user['username'] ?></td>
-                            <td>
-                                <img src="<?= $user['photo'] ?? "./assets/img/guest.png" ?>" width="50px">
-                            </td>
+                            <td style="vertical-align: middle;"><?= ($currentPage - 1) * 5 + ($index + 1)?></td>
+                            <td style="vertical-align: middle;"><?= $song['name'] ?></td>
                             <td style="vertical-align: middle;">
-                                <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $user['id'] ?>" data-username="<?= $user['username'] ?>" data-photo="<?= $user['photo'] ?>" data-name="<?= $user['name'] ?>" data-target-modal="editModal">
+                                <!-- play lagu -->
+                                <playsong data-path="<?= $song['path']?>" data-play="0"></playsong>
+                            </td>
+                            <td>
+                                <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $song['id'] ?>" data-name="<?= $song['name'] ?>" data-song="<?= $song['path'] ?>" data-target-modal="editModal">
                                     Edit
                                 </button>
-                                <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $user['id'] ?>"  data-target-modal="deleteModal">
+                                <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $song['id'] ?>"  data-target-modal="deleteModal">
                                     Delete
                                 </button>
                             </td>
@@ -47,7 +50,7 @@
         <div class="modal-dialog">
             <h6>Create</h6>
             <hr>
-            <form action="/?users-create" method="post" autocomplete="off" enctype="multipart/form-data">
+            <form action="/?songs-create" method="post" autocomplete="off" enctype="multipart/form-data">
                 <div class="d-flex">
                     <div class="me-2">
                         <div class="mb-2">
@@ -55,21 +58,11 @@
                             <input class="form-control" type="text" name="name">
                         </div>
                         <div class="mb-2">
-                            <p>Username</p>
-                            <input class="form-control" type="text" name="username">
+                            <p>Upload Lagu</p>
+                            <input data-target-preview="previewImgCreate" class="form-controll photoInput" type="file" name="music">
                         </div>
-                        <div class="mb-2">
-                            <p>Photo Profile</p>
-                            <input data-target-preview="previewImgCreate" class="form-controll photoInput" type="file" name="photo">
-                        </div>
-                    </div>
-                    <div>
-                        <p>Preview</p>
-                        <img id="previewImgCreate" width="80px" src="#" alt="">
                     </div>
                 </div>
-
-
 
                 <div class="w-auto d-flex">
                     <button data-target-modal="createModal" class="modal-close d-block btn btn-outline-black hover-text-white ms-auto">Cancel</button>
@@ -79,14 +72,12 @@
         </div>
     </div>
 
-
     <div id="editModal" class="modal">
         <div class="modal-dialog">
             <h6>Edit</h6>
             <hr>
-            <form action="/?users-edit" method="post" autocomplete="off" enctype="multipart/form-data">
+            <form action="/?songs-edit" method="post" autocomplete="off" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
-
                 <div class="d-flex">
                     <div class="me-2">
                         <div class="mb-2">
@@ -94,25 +85,14 @@
                             <input id="name" class="form-control" type="text" name="name">
                         </div>
                         <div class="mb-2">
-                            <p>Username</p>
-                            <input id="username" class="form-control" type="text" name="username">
+                            <p>Upload Lagu</p>
+                            <input data-target-preview="previewImgCreate" class="form-controll photoInput" type="file" name="music">
                         </div>
-                        <div class="mb-2">
-                            <p>Password</p>
-                            <input id="Password" class="form-control" type="text" name="password">
+                        <div class="mb-2" id="musicPath">
+                            
                         </div>
-                        <div class="mb-2">
-                            <p>Photo Profile</p>
-                            <input data-target-preview="photo" class="form-controll photoInput" type="file" name="photo">
-                        </div>
-                    </div>
-                    <div>
-                        <p>Preview</p>
-                        <img id="photo" width="80px" src="#" alt="">
                     </div>
                 </div>
-
-
 
                 <div class="w-auto d-flex">
                     <button data-target-modal="editModal" class="modal-close d-block btn btn-outline-black hover-text-white ms-auto">Cancel</button>
@@ -127,11 +107,11 @@
         <div class="modal-dialog">
             <h6>Delete</h6>
             <hr>
-            <form action="/?users-delete" method="post" autocomplete="off" enctype="multipart/form-data">
+            <form action="/?songs-delete" method="post" autocomplete="off" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
 
                 <div class="mb-3 mt-2">
-                    <label>Apakah Anda Yaking ingin menghapus data ini?</label>
+                    <label>Apakah Anda Yaking ingin menghapus Lagu ini?</label>
                 </div>
 
                 <div class="w-auto d-flex">
@@ -143,4 +123,5 @@
             </form>
         </div>
     </div>
+
 </section>

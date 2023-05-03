@@ -4,7 +4,7 @@
             <?php include_once __DIR__ . "/../partials/sidebar_login.php" ?>    
         </div>
         <div class="text-white w-100 main-section">
-            <h5 class="mb-3">Users</h5>
+            <h5 class="mb-3">Admin</h5>
             <button class="d-block btn-modal btn-black btn text-white mb-2 ms-auto" data-target-modal="createModal">Create</button>
             <table class="table-1 text-black bg-white px-1-py-1">
                 <thead>
@@ -27,6 +27,7 @@
                                 <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $user['id'] ?>" data-username="<?= $user['username'] ?>" data-photo="<?= $user['photo'] ?>" data-name="<?= $user['name'] ?>" data-target-modal="editModal">
                                     Edit
                                 </button>
+
                                 <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $user['id'] ?>"  data-target-modal="deleteModal">
                                     Delete
                                 </button>
@@ -47,7 +48,7 @@
         <div class="modal-dialog">
             <h6>Create</h6>
             <hr>
-            <form action="/?users-create" method="post" autocomplete="off" enctype="multipart/form-data">
+            <form action="/?admin-create" method="post" autocomplete="off" enctype="multipart/form-data">
                 <div class="d-flex">
                     <div class="me-2">
                         <div class="mb-2">
@@ -84,7 +85,7 @@
         <div class="modal-dialog">
             <h6>Edit</h6>
             <hr>
-            <form action="/?users-edit" method="post" autocomplete="off" enctype="multipart/form-data">
+            <form action="/?admin-edit" method="post" autocomplete="off" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
 
                 <div class="d-flex">
@@ -127,7 +128,7 @@
         <div class="modal-dialog">
             <h6>Delete</h6>
             <hr>
-            <form action="/?users-delete" method="post" autocomplete="off" enctype="multipart/form-data">
+            <form action="/?admin-delete" method="post" autocomplete="off" enctype="multipart/form-data">
                 <input type="hidden" name="id" id="id">
 
                 <div class="mb-3 mt-2">
@@ -143,4 +144,5 @@
             </form>
         </div>
     </div>
+
 </section>

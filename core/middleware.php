@@ -18,3 +18,18 @@ function login(){
     header("Location: /?login");
     return false;
 }
+
+
+function admin(){
+    if (!isset($_SESSION['user'])) {
+        return false;
+    }
+
+
+    if ($_SESSION['user']['is_admin'] == '1') {
+        return true;
+    }
+
+    header("Location: /?login");
+    return false;
+}

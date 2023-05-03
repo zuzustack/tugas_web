@@ -12,21 +12,26 @@ $(".btn-modalDetail").click(function (e) {
 
   data.forEach((e) => {
     if (e != "targetModal") {
-
+      // Preview Photo
       if (e == "photo") {
         if (obj[e] != "") {
-          modal.find(`img#${e}`).attr(
-            "src",
-            obj[e]
-          );
+          modal.find(`img#${e}`).attr("src", obj[e]);
         } else {
-          modal.find(`img#${e}`).attr(
-            "src",
-            "./assets/img/guest.png"
-          );
+          modal.find(`img#${e}`).attr("src", "./assets/img/guest.png");
         }
       } else {
         modal.find(`input#${e}`).val(obj[e]);
+      }
+
+      if (e == "song") {
+        console.log(obj[e]);
+        modal.find(`#musicPath`).html(`
+        <audio controls>
+          <source src="${obj[e]}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        `);
       }
     }
   });
@@ -40,7 +45,7 @@ $(".modal-close").click(function (e) {
   $(`#${$(this).data("target-modal")}`).removeClass("show");
 });
 
-$("#photoInput").change(function (e) {
+$(".photoInput").change(function (e) {
   const file = this.files[0];
   console.log(file);
   if (file) {

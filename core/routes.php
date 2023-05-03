@@ -3,9 +3,11 @@
 use Controller\AuthCtrl;
 
 $AuthCtrl = '\Controller\AuthCtrl';
+$AdminCtrl = '\Controller\AdminCtrl';
 $ErrorCtrl = '\Controller\ErrorCtrl';
 $HomeCtrl = '\Controller\HomeCtrl';
 $UserCtrl = '\Controller\UserCtrl';
+$SongCtrl = '\Controller\SongCtrl';
 
 
 $routes = array(
@@ -22,8 +24,22 @@ $routes = array(
     // Dashboard
     "dashboard.get" => $HomeCtrl.":dashboardView?login",
 
-    "users.get" => $UserCtrl.":usersView?login",
-    "users-create.post" => $UserCtrl.":createUser?login",
+    "users.get" => $UserCtrl.":usersView?admin",
+    "users-create.post" => $UserCtrl.":createUser?admin",
+    "users-edit.post" => $UserCtrl.":editUser?admin",
+    "users-delete.post" => $UserCtrl.":deleteUser?admin",
+
+
+    "admin.get" => $AdminCtrl.":adminView?admin",
+    "admin-create.post" => $AdminCtrl.":createAdmin?admin",
+    "admin-edit.post" => $AdminCtrl.":editAdmin?admin",
+    "admin-delete.post" => $AdminCtrl.":deleteAdmin?admin",
+
+
+    "songs.get" => $SongCtrl.":songView?admin",
+    "songs-create.post" => $SongCtrl.":createSong?admin",
+    "songs-edit.post" => $SongCtrl.":editSong?admin",
+    "songs-delete.post" => $SongCtrl.":deleteSong?admin",
 );
 
 $error = array(

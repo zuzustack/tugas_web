@@ -1,6 +1,5 @@
 <section style="place-items: center;" class="d-grid h-full bg-primary">
     <div class="card p-3 bg-secondary">
-        <p><i class="fa-solid fa-laptop"></i></p>
         <h4 class="text-center mb-3">Sign In</h4>
 
         <form method="post">

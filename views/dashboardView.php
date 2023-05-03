@@ -1,19 +1,23 @@
-<section class="bg-primary section">
+<section class="bg-primary h-full w-full section">
     <div class="d-flex">
-        <div>
-            <?php include_once __DIR__ . "/../partials/sidebar_login.php" ?>    
-        </div>
-        <div class="text-white px-3 py-2 main-section">
-            <h5 class="mb-3">Dashboard</h5>
-
-            <div>
-                <div class="card p-2 bg-secondary">
-                    <div class="card-title text-center mb-2">User</div>
-                    <div class="card-body text-center">
-                        50
-                    </div>
-                </div>
-            </div>
+    <div class="text-white w-100 main-section">
+            <table class="table-1 text-black bg-white px-1-py-1">
+                <thead>
+                    <th>Nama</th>
+                    <th>Play</th>
+                </thead>
+                <tbody>
+                    <?php foreach ($songs as $index => $song) : ?>
+                        <tr>
+                            <td style="vertical-align: middle;"><?= $song['name'] ?></td>
+                            <td style="vertical-align: middle;">
+                                <!-- play lagu -->
+                                <playsong id="<?= $song['id'] ?>" data-path="<?= $song['path']?>"  data-play="0"></playsong>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>
