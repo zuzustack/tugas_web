@@ -1,6 +1,6 @@
 
 
-    <div id="musicPLay" class="public-music px-3 py-2">
+    <div id="musicPLay" class="public-music px-3 bg-white py-2">
                         
     </div>
 

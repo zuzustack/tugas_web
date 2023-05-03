@@ -12,7 +12,7 @@
                             <td style="vertical-align: middle;"><?= $song['name'] ?></td>
                             <td style="vertical-align: middle;">
                                 <!-- play lagu -->
-                                <playsong id="<?= $song['id'] ?>" data-path="<?= $song['path']?>"  data-play="0"></playsong>
+                                <playsong id="<?= $song['id'] ?>" data-path="<?= $song['path']?>" data-judul="<?= $song['name'] ?>"  data-play="0"></playsong>
                             </td>
                         </tr>
                     <?php endforeach ?>

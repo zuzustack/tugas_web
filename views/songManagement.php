@@ -13,9 +13,6 @@
                     <th>Nama</th>
                     <th>Play</th>
                     <th>Action</th>
-                    <th id="musicPLay">
-                        
-                    </th>
                 </thead>
                 <tbody>
                     <?php foreach ($songs as $index => $song) : ?>
@@ -24,7 +21,7 @@
                             <td style="vertical-align: middle;"><?= $song['name'] ?></td>
                             <td style="vertical-align: middle;">
                                 <!-- play lagu -->
-                                <playsong data-path="<?= $song['path']?>" data-play="0"></playsong>
+                                <playsong data-index="<?= $index ?>" data-path="<?= $song['path']?>" data-play="0" data-judul="<?= $song['name'] ?>"></playsong>
                             </td>
                             <td>
                                 <button class="btn btn-modalDetail btn-outline-black text-black hover-text-white" data-id="<?= $song['id'] ?>" data-name="<?= $song['name'] ?>" data-song="<?= $song['path'] ?>" data-target-modal="editModal">

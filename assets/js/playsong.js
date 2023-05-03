@@ -1,6 +1,7 @@
 let initPlay = () => {
   let ctx = $("playsong");
   let music = [];
+  let judul = [];
 
   let setEventEnded = (path = "") => {
     $("#player").on("ended", function () {
@@ -16,9 +17,8 @@ let initPlay = () => {
       $("#musicPLay")
         .html(
           `
+              <h8 class="mb-1 mx-3 d-block">${judul[id]} | Playing</h8>
                 <audio autoplay controls id="player">
-                    <p>Semua</p>
-            
                     <source src="${music[id]}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
@@ -28,7 +28,7 @@ let initPlay = () => {
 
       console.log(id);
       
-      if (ctx.length < id + 1) {
+      if (ctx.length > id + 1) {
         setEventEnded(music[id]);
       }
 
@@ -40,9 +40,8 @@ let initPlay = () => {
     $("#musicPLay")
       .html(
         `
+              <h8 class="mb-1 mx-3 d-block">${ctx.data("judul")} | Playing</h8>
               <audio autoplay controls id="player">
-                  <p>Semua</p>
-      
                   <source src="${ctx.data("path")}" type="audio/mpeg">
                   Your browser does not support the audio element.
               </audio>
@@ -66,9 +65,11 @@ let initPlay = () => {
 
   for (let index = 0; index < ctx.length; index++) {
     let path = $(ctx[index]).data("path");
+    let name = $(ctx[index]).data("judul");
 
     if (path != "") {
       music.push(path);
+      judul.push(name);
     }
   }
 
