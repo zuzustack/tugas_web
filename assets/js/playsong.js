@@ -14,23 +14,9 @@ let initPlay = () => {
 
       id += 1;
 
-      $("#musicPLay")
-        .html(
-          `
-              <h8 class="mb-1 mx-3 d-block">${judul[id]} | Playing</h8>
-                <audio autoplay controls id="player">
-                    <source src="${music[id]}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            `
-        )
-        .attr("data-play", "1");
+      $(`playsong#${id}`)[0].click()
 
-      console.log(id);
-      
-      if (ctx.length > id + 1) {
-        setEventEnded(music[id]);
-      }
+
 
       console.log("Playing Next Song");
     });

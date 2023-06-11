@@ -60,3 +60,32 @@ $(".photoInput").change(function (e) {
     reader.readAsDataURL(file);
   }
 });
+
+
+
+
+$("#btn-signup").click(function (e) { 
+  e.preventDefault();
+  
+  if ($("#title-auth").html() === "Sign Up") {
+    $("#login-page").addClass("show");
+    $("#login-page").removeClass("hide");  
+    
+    $("#signup-page").addClass("hide");
+    $("#signup-page").removeClass("show");
+
+    $("#title-auth").html("Sign In");
+    $("#btn-signup").html("Sign Up");
+    
+    return;
+  }
+
+  $("#login-page").addClass("hide");
+  $("#login-page").removeClass("show");
+  $("#signup-page").addClass("show");
+  $("#signup-page").removeClass("hide");
+
+  $("#title-auth").html("Sign Up");
+  $("#btn-signup").html("Sign In");
+
+});

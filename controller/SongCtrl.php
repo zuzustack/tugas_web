@@ -90,6 +90,12 @@ class SongCtrl extends BaseCtrl{
 
         $id = $request['id'];
 
+
+        $song = Database::rawSql("SELECT * FROM songs WHERE id=$id")[0];
+
+        $file = explode("./", $song['path'])[1];
+        unlink(__DIR__ . "/../" . $file);
+
         $users = Database::runSql("DELETE FROM `songs` WHERE `id`=$id");
 
         return self::redirect("songs");

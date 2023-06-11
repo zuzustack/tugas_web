@@ -4,7 +4,7 @@
             <?php include_once __DIR__ . "/../partials/sidebar_login.php" ?>    
         </div>
         <div class="text-white w-100 main-section">
-            <h5 class="mb-3">Users</h5>
+            <h5 class="mb-3">Users Management</h5>
             <button class="d-block btn-modal btn-black btn text-white mb-2 ms-auto" data-target-modal="createModal">Create</button>
             <table class="table-1 text-black bg-white px-1-py-1">
                 <thead>
@@ -52,11 +52,11 @@
                     <div class="me-2">
                         <div class="mb-2">
                             <p>Name</p>
-                            <input class="form-control" type="text" name="name">
+                            <input class="form-control" required type="text" name="name">
                         </div>
                         <div class="mb-2">
                             <p>Username</p>
-                            <input class="form-control" type="text" name="username">
+                            <input class="form-control" required type="text" name="username">
                         </div>
                         <div class="mb-2">
                             <p>Photo Profile</p>
@@ -91,11 +91,11 @@
                     <div class="me-2">
                         <div class="mb-2">
                             <p>Name</p>
-                            <input id="name" class="form-control" type="text" name="name">
+                            <input required id="name" class="form-control" type="text" name="name">
                         </div>
                         <div class="mb-2">
                             <p>Username</p>
-                            <input id="username" class="form-control" type="text" name="username">
+                            <input required id="username" class="form-control" type="text" name="username">
                         </div>
                         <div class="mb-2">
                             <p>Password</p>

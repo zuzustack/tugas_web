@@ -23,10 +23,11 @@ $routes = array(
 
     // Dashboard
     "dashboard.get" => $HomeCtrl.":dashboardView?login",
+    "profile.get" => $HomeCtrl.":profileView?login",
 
     "users.get" => $UserCtrl.":usersView?admin",
-    "users-create.post" => $UserCtrl.":createUser?admin",
-    "users-edit.post" => $UserCtrl.":editUser?admin",
+    "users-create.post" => $UserCtrl.":createUser?guest",
+    "users-edit.post" => $UserCtrl.":editUser?login",
     "users-delete.post" => $UserCtrl.":deleteUser?admin",
 
 

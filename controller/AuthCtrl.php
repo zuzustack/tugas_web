@@ -17,14 +17,22 @@ class AuthCtrl extends BaseCtrl{
         $username = $request['username'];
         $password = $request['password'];
 
-        $user = Database::rawSql("SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $user = Database::rawSql("SELECT * FROM users WHERE username = '$username'");
+
         
         if (count($user) == 0) {
             return self::render("/views/loginView.php", [
                 "pageTitle" => "Login",
                 "error" => "Password atau username salah"
             ]);
-        } 
+        }
+
+        if (!password_verify($password, $user[0]['password'])) {
+            return self::render("/views/loginView.php", [
+                "pageTitle" => "Login",
+                "error" => "Password atau username salah"
+            ]);
+        }
 
 
 

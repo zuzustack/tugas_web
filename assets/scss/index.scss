@@ -8,6 +8,7 @@
 @import "pagination";
 @import "playsong";
 @import "modal";
+@import "authcss";
 @import "table";
 
 
@@ -161,6 +162,10 @@ a {
   }
 }
 
+.sign-up {
+  display: block;
+  cursor: pointer;
+}
 
 @each $name, $color in $colors {
   .text-#{$name} {

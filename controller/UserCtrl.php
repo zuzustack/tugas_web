@@ -44,6 +44,7 @@ class UserCtrl extends BaseCtrl{
         $request = self::$request;
         $files = self::$files;
 
+
         if ($files['photo']['name'] != "") {
             $photo = $files['photo'];
             $upload = self::upload($photo,"img/", $request['username']);
@@ -55,11 +56,15 @@ class UserCtrl extends BaseCtrl{
         $now = date("Y-m-d H:i:s");
         $username = $request['username'];
         $name = $request['name'];
-        $password = "123";
+        $password = password_hash($request['password'],PASSWORD_BCRYPT);
 
-        $users = Database::runSql("INSERT INTO users(create_time,name,photo,password,username,is_admin) VALUES('$now','$name','$path','$password','$username', 0)");
+        Database::runSql("INSERT INTO users(create_time,name,photo,password,username,is_admin) VALUES('$now','$name','$path','$password','$username', 0)");
 
-        return self::redirect("users");
+
+
+        return self::redirectWith("login", [
+            "success" => "Success Create User"
+        ]);
     }
 
 
@@ -89,7 +94,7 @@ class UserCtrl extends BaseCtrl{
 
         // password
         if (isset($request['password']) && $request['password'] != "") {
-            $password = $request['password'];
+            $password = password_hash($request['password'],PASSWORD_BCRYPT);
         } else {
             $password = $user['password'];
         }
@@ -106,6 +111,11 @@ class UserCtrl extends BaseCtrl{
 
         $users = Database::runSql("UPDATE users SET name='$name',password='$password',username='$username',photo='$path' WHERE `id`=$id;");
 
+        if ($id == $_SESSION['user']['id']) {
+            $user = Database::rawSql("SELECT * FROM users WHERE username = '$username'");
+            
+            $_SESSION['user'] = $user[0];
+        }
 
         return self::redirect("users");
     }

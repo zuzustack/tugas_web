@@ -24,4 +24,12 @@ class HomeCtrl extends BaseCtrl{
             "songs" => $songs
         ]);
     }
+
+
+    static public function profileView(){
+        return BaseCtrl::render("/views/profileView.php", [
+            "pageTitle" => "Profile",
+            "auth" => $_SESSION['user']
+        ]);
+    }
 }

@@ -3,6 +3,10 @@
 use Controller\BaseCtrl;
 use Controller\ErrorCtrl;
 
+if ($_SESSION['with'] == null) {
+    $_SESSION['with'] = [];
+}
+
 include_once(__DIR__ . "/../controller/BaseCtrl.php");
 include_once(__DIR__ . "/../controller/HomeCtrl.php");
 include_once(__DIR__ . "/../controller/UserCtrl.php");

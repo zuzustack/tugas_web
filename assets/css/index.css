@@ -150,6 +150,14 @@ audio::-webkit-media-controls-panel {
   height: fit-content;
 }
 
+.auth.show {
+  display: block;
+}
+
+.auth.hide {
+  display: none;
+}
+
 .table-1 {
   display: inline-table;
   width: 100%;
@@ -734,6 +742,11 @@ h7 {
 
 h8 {
   font-size: calc(3rem - (0.25rem * 8));
+}
+
+.sign-up {
+  display: block;
+  cursor: pointer;
 }
 
 .text-primary {

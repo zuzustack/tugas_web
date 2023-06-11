@@ -5,7 +5,7 @@
         </div>
         
         <div class="text-white w-100 main-section">
-            <h5 class="mb-3">Admin</h5>
+            <h5 class="mb-3">Songs Management</h5>
             <button class="d-block btn-modal btn-black btn text-white mb-2 ms-auto" data-target-modal="createModal">Create</button>
             <table class="table-1 text-black bg-white px-1-py-1">
                 <thead>
